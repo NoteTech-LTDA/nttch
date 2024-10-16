@@ -1,0 +1,352 @@
+:root {
+    --gray1-dark: rgba(34, 34, 39, 0.875);
+    --gray2-dark: rgba(51, 51, 56, 0.875);
+    --gray3-dark: rgba(68, 68, 73, 0.875);
+    --gray4-dark: rgba(85, 85, 90, 0.875);
+    --gray5-dark: rgba(102, 102, 107, 0.875);
+    --gray6-dark: rgba(119, 119, 124, 0.875);
+    --gray-dark-text: rgba(238, 238, 238, 0.875);    
+    --gray-dark-placeholder: rgba(208, 208, 208, 0.875);    
+    --blue: rgba(0, 150, 255, 0.875);
+}
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter';
+    color: var(--gray-dark-text);
+}
+
+button, input, select, option { font-size: 12pt; }
+aside button i { font-size: 15pt; }
+#new i { font-size: 60pt; }
+
+button, a, select, option {
+    cursor: pointer;
+}
+
+input {
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.content :is(button, a, select, option) {
+    background-color: var(--gray4-dark);
+    border: 1px solid var(--gray5-dark);
+    transition: 0.4s;
+}
+
+.content div {
+    background-color: var(--gray4-dark);
+    border: 1px solid var(--gray5-dark);
+    transition: 0.4s;
+}
+
+.content div :is(button, a, select, option) {
+    background-color: var(--gray5-dark);
+    border: 1px solid var(--gray6-dark);
+    transition: 0.4s;
+}
+
+:is(button, a, select, option, .content :is(button, a, select, option), .content div :is(button, a, select, option)):not(aside button):active,
+:is(button, a, select, option, .content :is(button, a, select, option), .content div :is(button, a, select, option)):not(aside button).active {
+    background-color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+main {
+    background-color: #444;
+    border: 1px solid #555;
+    min-height: calc(100vh - 62px);
+    padding: 10px;
+    padding-left: 260px;
+    padding-top: 50px;
+    z-index: 1;
+}
+aside, header, .popUp {
+    z-index: 9999;
+}
+section:not(.popUp) {
+    z-index: 2;
+}
+section h1 {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: var(--gray2-dark);
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--gray4-dark);
+    border-bottom: none;
+    backdrop-filter: blur(10px);
+}
+section .content {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: var(--gray3-dark);
+    box-sizing: border-box;
+    border: 1px solid var(--gray5-dark);
+    padding: 10px;
+    margin-bottom: 10px;
+    backdrop-filter: blur(10px);
+}
+#homeCnt {
+    display: grid;
+    grid-template-areas:
+        'new .'
+        'new .'
+        'new .'
+    ;
+    grid-template-columns: calc(40% - 5px) calc(60% - 5px);
+    grid-template-rows: 6vh 6vh 6vh;
+    gap: 10px;
+}
+#homeCnt button {
+    border-radius: 1.75vh;
+}
+
+#new {
+    grid-area: new;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+header {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 250px);
+    height: 40px;
+    left: 250px;
+    background-color: var(--gray2-dark);
+    border: 1px solid var(--gray4-dark);
+    backdrop-filter: blur(10px);
+}
+
+aside {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    width: 250px;
+    padding: 10px;
+    background-color: var(--gray2-dark);
+    height: 100vh;
+    border: 1px solid var(--gray4-dark);
+    overflow: auto;
+    box-sizing: border-box;
+}
+aside::-webkit-scrollbar {
+    display: none;
+}
+aside button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    height: 42.5px;
+    padding: 12.5px;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    border-radius: 7.5px;
+    background-color: transparent;
+    z-index: 1;
+}
+
+aside button:not(.active):hover {
+    background-color: var(--gray3-dark);
+}
+aside button.active:hover {
+    background-color: transparent;
+    cursor: default;
+}
+#indicator {
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 42.5px;
+    background-color: var(--blue);
+    border-radius: 7.5px;
+    transition: transform 0.4s;
+    z-index: 0; 
+    left: 10px; 
+}
+aside button i {
+    margin-right: 7.5px;
+    width: 15%;
+}
+aside * {
+    border: none;
+    color: var(--gray-dark-text);
+    transition: all 0.5s ease;
+}
+aside .separator {
+    background-color: var(--gray1-dark);
+    margin-top: 5px;
+    margin-bottom: 7.5px;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px; 
+    width: 95%;
+}
+.separator {
+    display: block;
+    position: relative;
+    height: 5px;
+    border-radius: 2.5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+aside h2 {
+    margin-top: 5px;
+}
+aside :is(h2, h3) {
+    display: block;
+    margin-left: 5px;
+    margin-bottom: 5px; 
+}
+
+.popUp {
+    display: none;
+    position: fixed;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 75%;
+    overflow: auto;
+    filter: none;
+    pointer-events: all;
+}
+.popUp.active {
+    display: block;
+}
+.popUp * {
+    width: 100%;
+}
+.popUp :is(input, select, button:not(.x)) {
+    background-color: var(--gray5-dark);
+    border: 1px solid var(--gray6-dark);
+    height: 40px;
+    border-radius: 10px;
+}
+.popUp #confirm {
+    background-color: var(--blue);
+    border: 1px solid var(--blue);
+}
+.popUpCnt {
+    padding: 10px;
+}
+body.pop-up-active :is(main, header, aside) {
+    filter: brightness(25%);
+    pointer-events: none; 
+}
+
+.x {
+    background-color: var(--gray4-dark);
+    position: absolute;
+    top: 7.5px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    transition: 0.4s;
+}
+
+.app {
+    display: none;
+}
+
+.app.open {
+    display: block;
+}
+
+:focus{
+    outline: none;
+}
+
+#fileTypes div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+    padding: 2.5px;
+}
+#fileTypes button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 2.5px;
+    height: 40px;
+    border-radius: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+#filters {
+    position: fixed;
+    width: calc(100% - 270px);
+}
+#filters input {
+    width: 100%;
+    background-color: var(--gray5-dark);
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--gray6-dark);
+}
+
+#explorerContent {
+    display: grid;
+    grid-template-columns: calc(35% - 5px) calc(65% - 5px);
+    gap: 10px;
+    height: calc(100vh - 310px);
+    margin-bottom: 0;
+}
+
+#explorerContent div {
+    overflow: auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#explorerContent div :is(button, a) {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    word-wrap: break-word;
+    word-break: break-word;
+    padding: 5px;
+    width: 100%;
+    min-height: 40px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: left;
+    transition: 0.4s;
+}
+
+#files .separator {
+    margin-top: 5px;
+    width: 100%;
+}
+
+#filters .separator {
+    background-color: var(--gray2-dark);
+    margin-bottom: -12.5px;
+}
+
+#explorerContent .separator {
+    background-color: var(--gray3-dark);
+    margin-bottom: 5px;
+}
+
+::-webkit-input-placeholder {
+    color: var(--gray-dark-placeholder);
+}
+#searchIcon {
+    display: inline;
+    position: relative;
+    top: 30px;
+    left: 10px;
+}
+#filters input {
+    padding-left: 35px;
+}

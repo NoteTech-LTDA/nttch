@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4316bbc93a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h3>Página Inicial</h3>
+    </header>
+    <aside>
+        <h2>Apps</h2>
+        <button class="appBtn active" onclick="openApp('home', this, 'Página Inicial')"><i class="fas fa-house"></i><span>Página Inicial</span></button>
+        <button class="appBtn" onclick="openApp('files', this, 'Arquivos')"><i class="fas fa-folder"></i><span>Arquivos</span></button>
+
+        <span class="separator"></span>
+        <h3>Edição</h3>
+        <button class="appBtn" onclick="openApp('docs', this, 'Documentos')"><i class="fas fa-file-alt"></i><span>Documentos</span></button>
+        <button class="appBtn" onclick="openApp('sheets', this, 'Planilhas')"><i class="fas fa-table"></i><span>Planilhas</span></button>
+        <button class="appBtn" onclick="openApp('slides', this, 'Apresentações')"><i class="fas fa-chart-pie"></i><span>Apresentações</span></button>
+        <button class="appBtn" onclick="openApp('forms', this, 'Formulários')"><i class="fas fa-list-check"></i><span>Formulários</span></button>
+        <button class="appBtn" onclick="openApp('image', this, 'Imagens')"><i class="fas fa-image"></i><span>Imagens</span></button>
+        <button class="appBtn" onclick="openApp('video', this, 'Vídeos')"><i class="fas fa-video"></i><span>Vídeos</span></button>
+
+        <span class="separator"></span>
+        <h3>Aprendizado</h3>
+        <button class="appBtn" onclick="openApp('flashcards', this, 'Flashcards')"><i class="fa-regular fa-credit-card"></i><span>Flashcards</span></button>
+        <button class="appBtn" onclick="openApp('mindmaps', this, 'Mapas Mentais')"><i class="fas fa-project-diagram"></i><span>Mapas Mentais</span></button>
+
+        <span class="separator"></span>
+        <h3>Conta</h3>
+        <button class="appBtn" onclick="openApp('user', this, 'Usuário')"><i class="fas fa-user"></i><span>Usuário</span></button>
+        <button class="appBtn" onclick="openApp('settings', this, 'Configurações')"><i class="fas fa-gear"></i><span>Configurações</span></button>
+    </aside>
+
+    <main>
+        <section id="home" class="app open">
+            <div>
+                <h1>Criar</h1>
+                <div id="homeCnt" class="content">
+                    <button id="new" onclick="togglePopUp('newFile_1')">
+                        <i class="fas fa-plus"></i>
+                        <span>Novo</span>
+                    </button>
+                    <button>Docs</button>
+                    <button>Sheets</button>
+                    <button>Slides</button>
+                </div>
+            </div>
+
+            <div>
+                <h1>Arquivos Recentes</h1>
+                <div class="recentFiles content"></div>
+            </div>
+        </section>
+
+        <section id="files" class="app">
+            <div id="filters">
+                <h1>Filtros</h1>
+                    <div class="content" id="fileTypes">
+                        <div>
+                            <button onclick="filterFiles('docs')">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                            <button onclick="filterFiles('sheets')">
+                                <i class="fas fa-table"></i>
+                            </button>
+                            <button onclick="filterFiles('slides')">
+                                <i class="fas fa-chart-pie"></i>
+                            </button>
+                            <button onclick="filterFiles('forms')">
+                                <i class="fas fa-list-check"></i>
+                            </button>
+                            <button onclick="filterFiles('image')">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <button onclick="filterFiles('video')">
+                                <i class="fas fa-video"></i>
+                            </button>
+                            <button onclick="filterFiles('flashcads')">
+                                <i class="fa-regular fa-credit-card"></i>
+                            </button>
+                            <button onclick="filterFiles('mindmaps')">
+                                <i class="fas fa-project-diagram"></i>
+                            </button>                            
+                        </div>
+
+                        <span class="separator"></span>
+
+                        <i id="searchIcon" class="fas fa-search"></i>
+                        <input type="text" id="fileName" placeholder="Nome do Arquivo">
+                    </div>
+                </div>
+
+                <span style="display: block; height: 190px;"></span>
+
+                <div id="explorer">
+                    <h1>Explorador de Arquivos</h1>
+                    <div class="content" id="explorerContent">
+                        <div class="folders">
+                            <button onclick="newFolder()"><i class="fas fa-plus" style="margin-left: 5px; margin-right: 7.5px;"></i>Nova Pasta</button>
+                            <span class="separator"></span>
+                        </div>
+                        <div class="files">
+                            <button onclick="togglePopUp('newFile_2')"><i class="fas fa-plus" style="margin-left: 7.5px; margin-right: 5px;"></i>Novo Arquivo</button>
+                            <span class="separator"></span>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    
+        <section id="docs" class="app">
+            <h1>Documentos</h1>
+            <!-- Conteúdo dos Documentos -->
+        </section>
+    
+        <section id="sheets" class="app">
+            <h1>Planilhas</h1>
+            <!-- Conteúdo das Planilhas -->
+        </section>
+    
+        <section id="slides" class="app">
+            <h1>Apresentações</h1>
+            <!-- Conteúdo das Apresentações -->
+        </section>
+    
+        <section id="forms" class="app">
+            <h1>Formulários</h1>
+            <!-- Conteúdo dos Formulários -->
+        </section>
+    
+        <section id="image" class="app">
+            <h1>Imagens</h1>
+            <!-- Conteúdo das Imagens -->
+        </section>
+    
+        <section id="video" class="app">
+            <h1>Vídeos</h1>
+            <!-- Conteúdo dos Vídeos -->
+        </section>
+    
+        <section id="flashcards" class="app">
+            <h1>Flashcards</h1>
+            <!-- Conteúdo dos Flashcards -->
+        </section>
+    
+        <section id="mindmaps" class="app">
+            <h1>Mapas Mentais</h1>
+            <!-- Conteúdo dos Mapas Mentais -->
+        </section>
+    
+        <section id="user" class="app">
+            <h1>Usuário</h1>
+            <!-- Conteúdo do Usuário -->
+        </section>
+    
+        <section id="settings" class="app">
+            <h1>Configurações</h1>
+            <div class="content">
+                
+            </div>
+        </section>
+    </main>    
+
+    <section id="newFile_1" class="popUp">
+        <h1>Novo</h1>
+        <button class="x" onclick="togglePopUp('newFile_1')"><i class="fas fa-xmark"></i></button>
+        <div class="content popUpCnt">
+            <h3>Nome do Arquivo</h3>
+            <input type="text">
+
+            <h3>Tipo de Arquivo</h3>
+            <select id="fileType">
+                <option value="docs">Documento</option>
+                <option value="sheets">Planilha</option>
+                <option value="slides">Apresentação</option>
+                <option value="forms">Formulário</option>
+                <option value="image">Imagem</option>
+                <option value="video">Vídeo</option>
+                <option value="flashcards">Flashcards</option>
+                <option value="mindmaps">Mapa Mental</option>
+            </select>
+
+            <h3>Local do Arquivo</h3>
+            <button onclick="searchStorage()" style="margin-bottom: 10px;">Buscar</button>
+            <button onclick="createFile()" id="confirm">Criar</button>
+        </div>
+    </section>
+
+    <section id="newFile_2" class="popUp">
+        <h1>Novo</h1>
+        <button class="x" onclick="togglePopUp('newFile_2')"><i class="fas fa-xmark"></i></button>
+        <div class="content popUpCnt">
+            <h3>Nome do Arquivo</h3>
+            <input type="text">
+
+            <h3>Tipo de Arquivo</h3>
+            <select id="fileType" style="margin-bottom: 10px;">
+                <option value="docs">Documento</option>
+                <option value="sheets">Planilha</option>
+                <option value="slides">Apresentação</option>
+                <option value="forms">Formulário</option>
+                <option value="image">Imagem</option>
+                <option value="video">Vídeo</option>
+                <option value="flashcards">Flashcards</option>
+                <option value="mindmaps">Mapa Mental</option>
+            </select>
+
+            <button onclick="createFile()" id="confirm">Criar</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
